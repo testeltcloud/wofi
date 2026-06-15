@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * Design tokens — "cores fluidas" (aurora)
+ * ------------------------------------------------------------------ */
+@theme {
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Neutrals (cool slate) */
+  --color-ink: #0b1020;
+  --color-ink-soft: #1b2236;
+  --color-muted: #5b647b;
+  --color-line: #e7eaf3;
+  --color-surface: #ffffff;
+  --color-canvas: #f7f9fe;
+
+  /* Brand — aurora stops */
+  --color-brand: #6d5efc; /* indigo-violet */
+  --color-brand-strong: #4f46e5;
+  --color-aqua: #18d3e6; /* cyan */
+  --color-magenta: #f25fd0; /* fuchsia/coral */
+
+  /* Dark sections */
+  --color-night: #070a18;
+  --color-night-soft: #0e1330;
+
+  --radius-card: 1.25rem;
+
+  --shadow-soft: 0 1px 2px rgba(11, 16, 32, 0.04),
+    0 8px 24px -12px rgba(11, 16, 32, 0.12);
+  --shadow-lift: 0 1px 2px rgba(11, 16, 32, 0.05),
+    0 24px 48px -24px rgba(21, 128, 61, 0.32);
+}
+
+/* Cor da marca — verde sólido (gradiente removido).
+   Mantemos o token --aurora como um gradiente de uma cor só para que
+   bg-aurora (background-image) e text-gradient continuem válidos. */
+:root {
+  --brand-green: #15803d;
+  --aurora: linear-gradient(var(--brand-green), var(--brand-green));
+}
+
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
+* {
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-brand) 22%, white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-strong);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Utilities
+ * ------------------------------------------------------------------ */
+@utility text-gradient {
+  background: var(--aurora);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-aurora {
+  background-image: var(--aurora);
+}
+
+/* Gentle aurora glow used behind dark sections */
+@utility aurora-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ *
+ * Scroll-reveal — zero JS, progressive enhancement.
+ * Content is fully visible by default; animation only enhances when
+ * the browser supports scroll-driven timelines and motion is allowed.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal,
+    .reveal-left,
+    .reveal-right {
+      animation-timeline: view();
+      animation-fill-mode: both;
+      animation-timing-function: linear;
+      animation-range: entry 0% cover 32%;
+    }
+    .reveal {
+      animation-name: reveal-in;
+    }
+    .reveal-left {
+      animation-name: reveal-left;
+    }
+    .reveal-right {
+      animation-name: reveal-right;
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes reveal-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes reveal-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Entrada do hero (acima da dobra) — anima no load, sem JS.
+ * LCP-safe: título e imagem usam transform-only (sem opacity) para não
+ * atrasar o Largest Contentful Paint.
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: no-preference) {
+  .anim-up,
+  .anim-up-lcp,
+  .anim-right-lcp,
+  .anim-fade {
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+    animation-fill-mode: both;
+  }
+  .anim-up {
+    animation-name: anim-up;
+  }
+  .anim-up-lcp {
+    animation-name: anim-up-lcp;
+  }
+  .anim-right-lcp {
+    animation-name: anim-right-lcp;
+    animation-duration: 0.85s;
+  }
+  .anim-fade {
+    animation-name: anim-fade;
+    animation-duration: 0.6s;
+  }
+}
+@keyframes anim-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes anim-up-lcp {
+  from {
+    transform: translateY(16px);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes anim-right-lcp {
+  from {
+    transform: translateX(60px);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes anim-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Drifting aurora blobs (decorative, GPU-only transforms) */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .blob-a {
+    animation: drift-a 22s ease-in-out infinite alternate;
+  }
+  .blob-b {
+    animation: drift-b 26s ease-in-out infinite alternate;
+  }
+  .blob-c {
+    animation: drift-c 30s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes drift-a {
+  to {
+    transform: translate3d(40px, -30px, 0) scale(1.12);
+  }
+}
+@keyframes drift-b {
+  to {
+    transform: translate3d(-50px, 24px, 0) scale(1.08);
+  }
+}
+@keyframes drift-c {
+  to {
+    transform: translate3d(28px, 36px, 0) scale(1.14);
+  }
+}
+
+/* Accordion open/close height animation via grid-rows (no JS measuring) */
+.accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s ease;
+}
+.accordion-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.accordion-panel > div {
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .accordion-panel {
+    transition: none;
+  }
+}

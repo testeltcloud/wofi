@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:beta.woo-fi.com)",
+      "Bash(npx --yes create-next-app@latest . --typescript --tailwind --app --eslint --no-src-dir --import-alias \"@/*\" --use-npm --yes)",
+      "Read(//Applications/Google Chrome.app/Contents/MacOS/**)",
+      "Read(//Applications/**)",
+      "Bash(npx --yes lighthouse@latest http://localhost:3210 --quiet --only-categories=performance,accessibility,best-practices,seo --form-factor=mobile --screenEmulation.mobile '--chrome-flags=--headless=new --no-sandbox' --output=json --output-path=./lh-mobile.json)",
+      "Bash(node -e \"const r=require\\('./lh-mobile.json'\\);for\\(const k of ['performance','accessibility','best-practices','seo']\\){console.log\\(k, Math.round\\(r.categories[k].score*100\\)\\)}\")",
+      "Bash(node -e ' *)",
+      "Bash(xargs kill -9)",
+      "Bash(sips -g pixelWidth -g pixelHeight -g hasAlpha public/images/2.svg)",
+      "Bash(sips -g pixelWidth -g pixelHeight -g hasAlpha public/images/conect.png)",
+      "Bash(grep -oE 'fill=\"#[0-9a-fA-F]{3,6}\"|rgb\\\\\\([0-9]' public/logobrowser.svg)"
+    ]
+  }
+}
