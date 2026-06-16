@@ -11,7 +11,23 @@
       "Bash(xargs kill -9)",
       "Bash(sips -g pixelWidth -g pixelHeight -g hasAlpha public/images/2.svg)",
       "Bash(sips -g pixelWidth -g pixelHeight -g hasAlpha public/images/conect.png)",
-      "Bash(grep -oE 'fill=\"#[0-9a-fA-F]{3,6}\"|rgb\\\\\\([0-9]' public/logobrowser.svg)"
+      "Bash(grep -oE 'fill=\"#[0-9a-fA-F]{3,6}\"|rgb\\\\\\([0-9]' public/logobrowser.svg)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(command -v chromium-cli playwright chromium)",
+      "Read(//Users/lucas/.cache/**)",
+      "Bash(node -e \"try{require.resolve\\('playwright'\\);console.log\\('playwright installed'\\)}catch\\(e\\){console.log\\('no playwright in project'\\)}\")",
+      "Bash(lsof -ti:3000)",
+      "Bash(ps -p 86267 -o command=)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
+      "Bash(command -v chromium-cli)",
+      "Bash(mkdir -p /tmp/wofi-shots)",
+      "Bash(npm init *)",
+      "Bash(npm i *)",
+      "Bash(node -e \"console.log\\('resolve:', require.resolve\\('puppeteer-core'\\)\\)\")"
+    ],
+    "additionalDirectories": [
+      "/tmp/wofi-shots",
+      "/private/tmp/wofi-shots"
     ]
   }
 }

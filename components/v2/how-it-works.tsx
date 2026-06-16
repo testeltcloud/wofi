@@ -70,6 +70,7 @@ export function V2HowItWorks() {
           {steps.map((s, i) => (
             <article
               key={s.title}
+              style={{ "--i": i } as React.CSSProperties}
               className="reveal rounded-3xl bg-white p-8 shadow-[0_24px_50px_-28px_rgba(11,16,32,0.3)] ring-1 ring-black/[0.03]"
             >
               <span className="font-[family-name:var(--font-poppins)] text-5xl font-extrabold leading-none text-[#cdd9f7]">

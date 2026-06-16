@@ -1,81 +1,94 @@
 import Image from "next/image";
 import amigos from "@/public/images/amigos.jpeg";
-import { CheckIcon, CloseIcon } from "@/components/ui/Icons";
+import { CheckIcon } from "@/components/ui/Icons";
 import { V2SectionLight } from "./section-light";
 
 const items = [
-  { label: "Passagem", ok: true },
-  { label: "Hospedagem", ok: true },
-  { label: "Seguro e Transfer", ok: true },
-  { label: "Conectividade", ok: false },
+  { label: "Passagem", highlight: false },
+  { label: "Hospedagem", highlight: false },
+  { label: "Seguro e Transfer", highlight: false },
+  { label: "Conectividade", highlight: true },
 ] as const;
 
 export function V2ValueProp() {
   return (
     <V2SectionLight>
-      <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-        {/* Imagem em elipse, com glow suave atrás */}
-        <div className="reveal relative mx-auto w-full max-w-sm lg:max-w-md">
-          <div
-            aria-hidden
-            className="absolute -bottom-8 -left-8 -z-10 h-3/4 w-3/4 rounded-full bg-gradient-to-br from-[#bcd0ff] to-[#d9d2ff] opacity-60 blur-3xl"
-          />
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[50%] shadow-[0_34px_70px_-30px_rgba(11,16,32,0.45)]">
-            <Image
-              src={amigos}
-              alt="Três amigos com malas em um aeroporto"
-              fill
-              placeholder="blur"
-              sizes="(max-width: 1024px) 80vw, 38vw"
-              className="object-cover"
-            />
+      <div className="mx-auto max-w-6xl">
+        {/* fancy-corners desenha as duas "pontas" verdes atrás do card
+            (canto superior-esquerdo + inferior-direito). reveal anima a
+            entrada e cria o contexto de empilhamento p/ as pontas ficarem
+            atrás do card. */}
+        <div className="fancy-corners reveal">
+          <div className="relative overflow-hidden rounded-[1.75rem] bg-white shadow-[0_30px_80px_-44px_rgba(11,16,32,0.4)] ring-1 ring-black/[0.04] lg:flex lg:items-stretch">
+            {/* Imagem à esquerda — agora quadrada, preenchendo a altura */}
+            <div className="relative aspect-[4/3] w-full lg:aspect-auto lg:w-[44%] lg:flex-none lg:self-stretch">
+              <Image
+                src={amigos}
+                alt="Três amigos com malas em um aeroporto"
+                fill
+                placeholder="blur"
+                sizes="(max-width: 1024px) 100vw, 44vw"
+                className="object-cover"
+              />
+            </div>
+
+            {/* Conteúdo à direita */}
+            <div className="flex-1 p-8 sm:p-10 lg:p-12 xl:p-14">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#eaf7ee] px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.14em] text-[#15803d] ring-1 ring-[#15803d]/15">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#15803d]" />
+                Portfólio completo
+              </span>
+
+              <h2 className="mt-5 font-[family-name:var(--font-poppins)] text-[2.1rem] font-extrabold leading-[1.05] tracking-[-0.03em] text-[#0b1020] sm:text-[2.6rem] lg:text-[2.9rem]">
+                O detalhe que <span className="text-[#15803d]">faltava</span> na
+                sua entrega
+              </h2>
+
+              <p className="mt-5 max-w-xl text-[1.0625rem] leading-[1.65] text-[#5b647b]">
+                Você entrega a experiência completa, exceto por um detalhe. A
+                Woofi acrescenta conectividade internacional ao portfólio da sua
+                agência de forma simples, sem operação complexa, sem estoque e
+                sem depender de operadoras.
+              </p>
+
+              <ul className="mt-8 grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+                {items.map((it) => (
+                  <li
+                    key={it.label}
+                    className={
+                      it.highlight
+                        ? "flex items-center gap-3 rounded-2xl bg-[#15803d] px-5 py-4 shadow-[0_18px_36px_-16px_rgba(21,128,61,0.7)]"
+                        : "flex items-center gap-3 rounded-2xl bg-[#f6f8fb] px-5 py-4 ring-1 ring-black/[0.05]"
+                    }
+                  >
+                    <span
+                      className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${
+                        it.highlight
+                          ? "bg-white/20 text-white"
+                          : "bg-[#e7f7ee] text-[#15803d]"
+                      }`}
+                    >
+                      <CheckIcon className="h-5 w-5" />
+                    </span>
+                    <span className="flex flex-col">
+                      <span
+                        className={`text-[1.0625rem] font-semibold ${
+                          it.highlight ? "text-white" : "text-[#0b1020]"
+                        }`}
+                      >
+                        {it.label}
+                      </span>
+                      {it.highlight && (
+                        <span className="text-xs font-medium text-white/85">
+                          com a Woofi
+                        </span>
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-
-        {/* Conteúdo à direita */}
-        <div className="reveal">
-          <h2 className="font-[family-name:var(--font-poppins)] text-[2.4rem] font-extrabold leading-[1.04] tracking-[-0.03em] text-[#0b1020] sm:text-[3rem] lg:text-[3.4rem]">
-            O detalhe que{" "}
-            <br className="hidden sm:block" />
-            faltava na sua entrega
-          </h2>
-
-          <p className="mt-6 max-w-xl text-[1.1875rem] leading-[1.6] text-[#5b647b]">
-            Você entrega a experiência completa, exceto por um detalhe. A Woofi
-            acrescenta conectividade internacional ao portfólio da sua agência de
-            forma simples, sem operação complexa, sem estoque e sem depender de
-            operadoras.
-          </p>
-
-          <ul className="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {items.map((it) => (
-              <li
-                key={it.label}
-                className="flex items-center gap-3.5 rounded-2xl bg-white px-5 py-5 shadow-[0_12px_30px_-14px_rgba(11,16,32,0.2)] ring-1 ring-black/[0.04]"
-              >
-                <span
-                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-full ${
-                    it.ok
-                      ? "bg-[#e7f7ee] text-[#157f3c]"
-                      : "bg-[#fdeae6] text-[#f15a3a]"
-                  }`}
-                >
-                  {it.ok ? (
-                    <CheckIcon className="h-5 w-5" />
-                  ) : (
-                    <CloseIcon className="h-5 w-5" />
-                  )}
-                </span>
-                <span
-                  className={`text-[1.0625rem] font-semibold ${
-                    it.ok ? "text-[#0b1020]" : "text-[#f15a3a]"
-                  }`}
-                >
-                  {it.label}
-                </span>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </V2SectionLight>

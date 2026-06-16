@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { site } from "@/lib/site";
+import { ScrollReveal } from "@/components/interactive/scroll-reveal";
 import "./globals.css";
 
 const title = "Woofi — Conectividade internacional para sua agência de viagem";
@@ -67,8 +68,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className="h-full antialiased">
+    <html lang="pt-BR" className="h-full antialiased" suppressHydrationWarning>
       <body className="min-h-full">
+        {/* Ativa o estado inicial do scroll-reveal só quando há JS (evita
+            FOUC e mantém o conteúdo visível sem JS). Roda antes do paint. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('reveal-js')",
+          }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[var(--color-ink)] focus:px-5 focus:py-3 focus:text-sm focus:font-semibold focus:text-white"
@@ -76,6 +84,7 @@ export default function RootLayout({
           Pular para o conteúdo
         </a>
         {children}
+        <ScrollReveal />
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger

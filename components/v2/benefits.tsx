@@ -1,60 +1,61 @@
-import type { SVGProps } from "react";
-
-const base: SVGProps<SVGSVGElement> = {
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.8,
-  strokeLinecap: "round",
-  strokeLinejoin: "round",
-  "aria-hidden": true,
-};
-
-const Dollar = (p: SVGProps<SVGSVGElement>) => (
-  <svg {...base} {...p}>
-    <path d="M12 3v18" />
-    <path d="M16.5 7c0-1.7-2-3-4.5-3S7.5 5.3 7.5 7s2 2.8 4.5 3 4.5 1.3 4.5 3-2 3-4.5 3-4.5-1.3-4.5-3" />
-  </svg>
-);
-const Globe = (p: SVGProps<SVGSVGElement>) => (
-  <svg {...base} {...p}>
-    <circle cx="12" cy="12" r="9" />
-    <path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" />
-  </svg>
-);
-const Phone = (p: SVGProps<SVGSVGElement>) => (
-  <svg {...base} {...p}>
-    <rect x="7" y="3" width="10" height="18" rx="2.5" />
-    <path d="M10.5 18h3" />
-  </svg>
-);
-const Layers = (p: SVGProps<SVGSVGElement>) => (
-  <svg {...base} {...p}>
-    <path d="M12 3 21 8 12 13 3 8z" />
-    <path d="M3 12l9 5 9-5" />
-    <path d="M3 16l9 5 9-5" />
-  </svg>
-);
-const Layout = (p: SVGProps<SVGSVGElement>) => (
-  <svg {...base} {...p}>
-    <rect x="3" y="4" width="18" height="16" rx="2.5" />
-    <path d="M9 4v16M3 10h6" />
-  </svg>
-);
-const Chat = (p: SVGProps<SVGSVGElement>) => (
-  <svg {...base} {...p}>
-    <path d="M4 5h16a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" />
-    <path d="M8 9h8M8 12.5h5" />
-  </svg>
-);
+import Image from "next/image";
+import margem from "@/public/images/itensCrds/Margem garantida.png";
+import cobertura from "@/public/images/itensCrds/amplaCobertura.jpeg";
+import esim from "@/public/images/itensCrds/eSim.jpeg";
+import risco from "@/public/images/itensCrds/riscoZero.jpeg";
+import plataforma from "@/public/images/itensCrds/pataformaInteligente.png";
+import suporte from "@/public/images/itensCrds/suporte24h.png";
 
 const benefits = [
-  { Icon: Dollar, title: "Margem garantida", body: "Margem atrativa em cada plano de conectividade vendido." },
-  { Icon: Globe, title: "Ampla Cobertura", body: "Cobertura consolidada em mais de 165 países." },
-  { Icon: Phone, title: "eSIM prático", body: "Ativado pelo próprio cliente, direto no celular, sem entrega física." },
-  { Icon: Layers, title: "Risco zero", body: "Zero estoque, zero risco operacional e zero custo de entrada." },
-  { Icon: Layout, title: "Plataforma Inteligente", body: "Gestão de vendas e acompanhamento em tempo real." },
-  { Icon: Chat, title: "Suporte 24h", body: "Sua agência não precisa intermediar atendimentos técnicos." },
+  {
+    img: margem,
+    title: "Margem garantida",
+    body: "Margem atrativa em cada plano de conectividade vendido.",
+    // card-destaque: ocupa 2x2 no bento
+    span: "sm:col-span-2 lg:col-span-2 lg:row-span-2",
+    wide: true,
+    feature: true,
+  },
+  {
+    img: cobertura,
+    title: "Ampla Cobertura",
+    body: "Cobertura consolidada em mais de 165 países.",
+    span: "lg:col-span-2",
+    wide: true,
+    feature: false,
+  },
+  {
+    img: esim,
+    title: "eSIM prático",
+    body: "Ativado pelo próprio cliente, direto no celular, sem entrega física.",
+    span: "",
+    wide: false,
+    feature: false,
+  },
+  {
+    img: risco,
+    title: "Risco zero",
+    body: "Zero estoque, zero risco operacional e zero custo de entrada.",
+    span: "",
+    wide: false,
+    feature: false,
+  },
+  {
+    img: plataforma,
+    title: "Plataforma Inteligente",
+    body: "Gestão de vendas e acompanhamento em tempo real.",
+    span: "lg:col-span-2",
+    wide: true,
+    feature: false,
+  },
+  {
+    img: suporte,
+    title: "Suporte 24h",
+    body: "Sua agência não precisa intermediar atendimentos técnicos.",
+    span: "sm:col-span-2 lg:col-span-2",
+    wide: true,
+    feature: false,
+  },
 ] as const;
 
 export function V2Benefits() {
@@ -63,7 +64,7 @@ export function V2Benefits() {
       <div className="mx-auto max-w-[1280px] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         {/* Cabeçalho */}
         <div className="reveal text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#2563eb]">
+          <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#15803d]">
             Vantagens
           </p>
           <h2 className="mx-auto mt-5 max-w-3xl font-[family-name:var(--font-poppins)] text-[2.3rem] font-extrabold leading-[1.06] tracking-[-0.03em] text-[#0b1020] sm:text-[2.9rem] lg:text-[3.3rem]">
@@ -77,23 +78,61 @@ export function V2Benefits() {
           </p>
         </div>
 
-        {/* Cards */}
-        <ul className="reveal mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {benefits.map(({ Icon, title, body }) => (
+        {/* Bento de cards com imagem — layout assimétrico */}
+        <ul className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4 lg:auto-rows-[220px]">
+          {benefits.map(({ img, title, body, span, wide, feature }, i) => (
             <li
               key={title}
-              className="flex gap-4 rounded-2xl bg-[#f4f6fc] p-6 ring-1 ring-[#e8ecf7] transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-[0_22px_44px_-24px_rgba(11,16,32,0.28)]"
+              style={{ "--i": i } as React.CSSProperties}
+              className={`reveal ${span}`}
             >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#e3ecff] to-[#d3e0fd] text-[#2563eb] shadow-[0_8px_18px_-8px_rgba(37,99,235,0.55)]">
-                <Icon className="h-[22px] w-[22px]" />
-              </span>
-              <div>
-                <h3 className="text-[1.0625rem] font-bold text-[#0b1020]">
+              {/* wrapper interno cuida do hover/visual; o <li> cuida da
+                  entrada (reveal) — assim os dois transforms não brigam */}
+              <div className="group relative isolate h-full min-h-[260px] overflow-hidden rounded-3xl shadow-[0_18px_40px_-26px_rgba(11,16,32,0.5)] ring-1 ring-black/5 transition-transform duration-500 ease-out hover:-translate-y-1.5 lg:min-h-0">
+              <Image
+                src={img}
+                alt={title}
+                fill
+                placeholder="blur"
+                sizes={
+                  wide
+                    ? "(max-width: 1024px) 100vw, 50vw"
+                    : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                }
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+              />
+
+              {/* Véu escuro para legibilidade do texto — mais denso na base,
+                  onde fica o título/descrição */}
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-[#04060f]/95 via-[#04060f]/60 via-35% to-transparent"
+              />
+              {/* Brilho verde da marca no hover */}
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-[#15803d]/55 via-[#15803d]/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              />
+              {/* Borda de realce no hover */}
+              <div
+                aria-hidden
+                className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/0 transition duration-500 group-hover:ring-white/25"
+              />
+
+              <div className="relative flex h-full flex-col justify-end p-6 lg:p-7">
+                <h3
+                  className={`font-[family-name:var(--font-poppins)] font-extrabold tracking-tight text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.7),0_1px_2px_rgba(0,0,0,0.6)] ${
+                    feature
+                      ? "text-[1.5rem] lg:text-[1.85rem]"
+                      : "text-[1.15rem] lg:text-[1.3rem]"
+                  }`}
+                >
                   {title}
                 </h3>
-                <p className="mt-1.5 text-[0.95rem] leading-relaxed text-[#5b647b]">
+                <p className="mt-2 max-w-md text-[0.92rem] leading-relaxed text-white/95 [text-shadow:0_1px_8px_rgba(0,0,0,0.65)]">
                   {body}
                 </p>
+              </div>
               </div>
             </li>
           ))}

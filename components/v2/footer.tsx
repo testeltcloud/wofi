@@ -12,7 +12,7 @@ export function V2Footer() {
   return (
     <footer className="border-t border-[#e8ebf2] bg-white">
       <div className="mx-auto max-w-[1600px] px-5 py-8 sm:px-8 lg:px-12">
-        <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
+        <div className="reveal flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
           {/* logo dessaturada */}
           <span className="inline-flex opacity-50 grayscale">
             <V2Logo />

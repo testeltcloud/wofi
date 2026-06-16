@@ -25,7 +25,10 @@ export function V2Quote() {
           </div>
 
           {/* Imagem destacada */}
-          <div className="reveal relative">
+          <div
+            className="reveal relative"
+            style={{ "--i": 1 } as React.CSSProperties}
+          >
             <div
               aria-hidden
               className="absolute -inset-4 -z-10 rounded-[2.25rem] bg-gradient-to-br from-[#c7d6ff] to-[#e7d8ff] opacity-60 blur-2xl"

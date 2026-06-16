@@ -101,60 +101,51 @@ body {
 }
 
 /* ------------------------------------------------------------------ *
- * Scroll-reveal — zero JS, progressive enhancement.
- * Content is fully visible by default; animation only enhances when
- * the browser supports scroll-driven timelines and motion is allowed.
+ * Scroll-reveal — IntersectionObserver adiciona .is-visible quando o
+ * elemento entra na viewport (ver components/interactive/scroll-reveal).
+ * Funciona em TODOS os browsers (web + mobile, incl. iOS Safari).
+ *
+ * O estado inicial (escondido) só é aplicado quando há JS — a classe
+ * .reveal-js entra no <html> antes do paint. Sem JS, o conteúdo aparece
+ * normalmente (bom p/ SEO; sem CLS; sem impacto no LCP).
+ *
+ * Anima só opacity/transform (compositor) e respeita reduced-motion.
+ * Defina --i (índice) para escalonar a entrada de listas/grids.
  * ------------------------------------------------------------------ */
 @media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .reveal,
-    .reveal-left,
-    .reveal-right {
-      animation-timeline: view();
-      animation-fill-mode: both;
-      animation-timing-function: linear;
-      animation-range: entry 0% cover 32%;
-    }
-    .reveal {
-      animation-name: reveal-in;
-    }
-    .reveal-left {
-      animation-name: reveal-left;
-    }
-    .reveal-right {
-      animation-name: reveal-right;
-    }
+  .reveal-js .reveal,
+  .reveal-js .reveal-left,
+  .reveal-js .reveal-right {
+    opacity: 0;
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 0.7, 0.21, 1),
+      transform 0.7s cubic-bezier(0.22, 0.7, 0.21, 1);
+  }
+  .reveal-js .reveal {
+    transform: translateY(26px);
+  }
+  .reveal-js .reveal-left {
+    transform: translateX(-40px);
+  }
+  .reveal-js .reveal-right {
+    transform: translateX(40px);
+  }
+  .reveal-js .reveal[data-visible],
+  .reveal-js .reveal-left[data-visible],
+  .reveal-js .reveal-right[data-visible] {
+    opacity: 1;
+    transform: none;
   }
 }
 
-@keyframes reveal-in {
-  from {
-    opacity: 0;
-    transform: translateY(26px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes reveal-left {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes reveal-right {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
+/* Escalonamento (stagger) só em telas maiores, onde os itens de uma
+   grade entram juntos. No mobile cada item já entra na sua vez, então
+   não adicionamos atraso para a rolagem continuar instantânea. */
+@media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+  .reveal-js .reveal,
+  .reveal-js .reveal-left,
+  .reveal-js .reveal-right {
+    transition-delay: calc(var(--i, 0) * 70ms);
   }
 }
 
@@ -274,5 +265,60 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .accordion-panel {
     transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Fancy corners — "pontas verdes" que aparecem atrás do card,
+ * no canto superior-esquerdo e inferior-direito. Cor da marca (verde).
+ * As pontas são pseudo-elementos com z-index negativo, então ficam
+ * atrás do card (que tem fundo opaco) e só "vazam" nos cantos.
+ * ------------------------------------------------------------------ */
+.fancy-corners {
+  position: relative;
+  /* cria um contexto de empilhamento próprio para que as pontas
+     (z-index: -1) fiquem acima do fundo da seção, mas atrás do card */
+  isolation: isolate;
+}
+
+.fancy-corners::before,
+.fancy-corners::after {
+  content: "";
+  position: absolute;
+  width: 8em;
+  height: 8em;
+  background: var(--brand-green);
+  z-index: -1;
+}
+
+/* canto superior-esquerdo */
+.fancy-corners::before {
+  top: -1.1764em;
+  left: -1.1764em;
+  -webkit-mask-image: linear-gradient(-45deg, #fff 85.5%, transparent 0);
+  mask-image: linear-gradient(-45deg, #fff 85.5%, transparent 0);
+}
+
+/* canto inferior-direito */
+.fancy-corners::after {
+  bottom: -1.1764em;
+  right: -1.1764em;
+  -webkit-mask-image: linear-gradient(-45deg, transparent 14.5%, #fff 0);
+  mask-image: linear-gradient(-45deg, transparent 14.5%, #fff 0);
+}
+
+@media (min-width: 1024px) {
+  .fancy-corners::before,
+  .fancy-corners::after {
+    width: 14em;
+    height: 14em;
+  }
+  .fancy-corners::before {
+    top: -2.0588em;
+    left: -2.0588em;
+  }
+  .fancy-corners::after {
+    bottom: -2.0588em;
+    right: -2.0588em;
   }
 }
