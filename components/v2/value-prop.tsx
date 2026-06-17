@@ -20,8 +20,12 @@ export function V2ValueProp() {
             atrás do card. */}
         <div className="fancy-corners reveal">
           <div className="relative overflow-hidden rounded-[1.75rem] bg-white shadow-[0_30px_80px_-44px_rgba(11,16,32,0.4)] ring-1 ring-black/[0.04] lg:flex lg:items-stretch">
-            {/* Imagem à esquerda — agora quadrada, preenchendo a altura */}
-            <div className="relative aspect-[4/3] w-full lg:aspect-auto lg:w-[44%] lg:flex-none lg:self-stretch">
+            {/* Imagem: mais paisagem no mobile/tablet, preenche altura no lg+ */}
+            <div className="relative w-full
+                            aspect-[4/3]
+                            sm:aspect-[16/9]
+                            md:aspect-[2/1]
+                            lg:aspect-auto lg:w-[44%] lg:flex-none lg:self-stretch">
               <Image
                 src={amigos}
                 alt="Três amigos com malas em um aeroporto"

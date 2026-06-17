@@ -23,7 +23,9 @@
       "Bash(mkdir -p /tmp/wofi-shots)",
       "Bash(npm init *)",
       "Bash(npm i *)",
-      "Bash(node -e \"console.log\\('resolve:', require.resolve\\('puppeteer-core'\\)\\)\")"
+      "Bash(node -e \"console.log\\('resolve:', require.resolve\\('puppeteer-core'\\)\\)\")",
+      "Bash(echo \"TSC: $?\")",
+      "Bash(echo \"BUILD: $?\")"
     ],
     "additionalDirectories": [
       "/tmp/wofi-shots",

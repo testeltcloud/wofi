@@ -49,7 +49,10 @@ export function V2Header() {
           ))}
         </nav>
 
-        <V2CtaButton className="inline-flex h-12 items-center justify-center rounded-full bg-[#2563eb] px-6 text-[15px] font-semibold text-white shadow-[0_12px_24px_-10px_rgba(37,99,235,0.7)] transition hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0">
+        <V2CtaButton className="inline-flex items-center justify-center rounded-full bg-[#2563eb] font-semibold text-white shadow-[0_12px_24px_-10px_rgba(37,99,235,0.7)] transition hover:-translate-y-0.5 hover:brightness-110 active:translate-y-0
+                                h-9 px-4 text-[13px]
+                                sm:h-10 sm:px-5 sm:text-[14px]
+                                lg:h-12 lg:px-6 lg:text-[15px]">
           Cadastre sua Agência
         </V2CtaButton>
       </div>
