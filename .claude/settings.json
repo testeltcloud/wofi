@@ -25,7 +25,18 @@
       "Bash(npm i *)",
       "Bash(node -e \"console.log\\('resolve:', require.resolve\\('puppeteer-core'\\)\\)\")",
       "Bash(echo \"TSC: $?\")",
-      "Bash(echo \"BUILD: $?\")"
+      "Bash(echo \"BUILD: $?\")",
+      "Bash(ffprobe -v quiet -print_format json -show_format -show_streams \"/Users/lucas/Desktop/woofiNew/wofi/public/images/itensCrds/64594-510542191.mp4\")",
+      "Bash(python3 -c ' *)",
+      "Bash(mdls \"/Users/lucas/Desktop/woofiNew/wofi/public/images/itensCrds/64594-510542191.mp4\")",
+      "Bash(afinfo \"/Users/lucas/Desktop/woofiNew/wofi/public/images/itensCrds/64594-510542191.mp4\")",
+      "Bash(command -v ffmpeg)",
+      "Bash(ffmpeg -version)",
+      "Bash(brew list *)",
+      "Bash(brew install *)",
+      "Bash(node -e \"try{require.resolve\\('fluent-ffmpeg'\\);console.log\\('fluent-ffmpeg ok'\\)}catch\\(e\\){console.log\\('not available'\\)}\")",
+      "Bash(ffmpeg -i /Users/lucas/Desktop/woofiNew/wofi/public/images/itensCrds/64594-510542191.mp4 -c:v libx264 -preset slow -crf 26 -vf scale=-2:1080 -movflags +faststart -an -y /Users/lucas/Desktop/woofiNew/wofi/public/video/hero-bg.mp4)",
+      "Bash(ffmpeg -i /Users/lucas/Desktop/woofiNew/wofi/public/images/itensCrds/64594-510542191.mp4 -c:v libvpx-vp9 -crf 34 -b:v 0 -vf scale=-2:1080 -an -y /Users/lucas/Desktop/woofiNew/wofi/public/video/hero-bg.webm)"
     ],
     "additionalDirectories": [
       "/tmp/wofi-shots",

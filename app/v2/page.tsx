@@ -4,6 +4,7 @@ import { LeadModalProvider } from "@/components/interactive/lead-modal";
 import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/sections/hero";
 import { V2SectionLight } from "@/components/v2/section-light";
+import { V2VideoSection } from "@/components/v2/video-section";
 
 // Fontes escopadas a esta página (a home camping usa Sora + Inter).
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -30,6 +31,7 @@ export default function V2Page() {
         <main id="main">
           <Hero />
           <V2SectionLight />
+          <V2VideoSection />
         </main>
       </LeadModalProvider>
     </div>
