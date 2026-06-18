@@ -3,6 +3,7 @@ import { Inter, Sora } from "next/font/google";
 import { LeadModalProvider } from "@/components/interactive/lead-modal";
 import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/sections/hero";
+import { V2MapSection } from "@/components/v2/map-section-wrapper";
 import { V2SectionLight } from "@/components/v2/section-light";
 import { V2VideoSection } from "@/components/v2/video-section";
 
@@ -30,6 +31,7 @@ export default function V2Page() {
         <Header />
         <main id="main">
           <Hero />
+          <V2MapSection />
           <V2SectionLight />
           <V2VideoSection />
         </main>

@@ -36,7 +36,11 @@
       "Bash(brew install *)",
       "Bash(node -e \"try{require.resolve\\('fluent-ffmpeg'\\);console.log\\('fluent-ffmpeg ok'\\)}catch\\(e\\){console.log\\('not available'\\)}\")",
       "Bash(ffmpeg -i /Users/lucas/Desktop/woofiNew/wofi/public/images/itensCrds/64594-510542191.mp4 -c:v libx264 -preset slow -crf 26 -vf scale=-2:1080 -movflags +faststart -an -y /Users/lucas/Desktop/woofiNew/wofi/public/video/hero-bg.mp4)",
-      "Bash(ffmpeg -i /Users/lucas/Desktop/woofiNew/wofi/public/images/itensCrds/64594-510542191.mp4 -c:v libvpx-vp9 -crf 34 -b:v 0 -vf scale=-2:1080 -an -y /Users/lucas/Desktop/woofiNew/wofi/public/video/hero-bg.webm)"
+      "Bash(ffmpeg -i /Users/lucas/Desktop/woofiNew/wofi/public/images/itensCrds/64594-510542191.mp4 -c:v libvpx-vp9 -crf 34 -b:v 0 -vf scale=-2:1080 -an -y /Users/lucas/Desktop/woofiNew/wofi/public/video/hero-bg.webm)",
+      "Bash(curl -s \"https://cdn.prod.website-files.com/62f0907dd19c8b7e8ca7c71a/62f46113b9b8313cca320554_123.svg\" -o /Users/lucas/Desktop/woofiNew/wofi/public/images/123.svg)",
+      "Bash(cat /Users/lucas/.npm/_logs/2026-06-18T01_09_24_083Z-eresolve-report.txt 2>/dev/null | head -30)",
+      "Read(//Users/lucas/.npm/_logs/**)",
+      "Bash(node -e \"const m = require\\('react-simple-maps'\\); console.log\\(Object.keys\\(m\\)\\)\")"
     ],
     "additionalDirectories": [
       "/tmp/wofi-shots",
