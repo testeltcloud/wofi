@@ -19,7 +19,7 @@ export function V2ValueProp() {
             entrada e cria o contexto de empilhamento p/ as pontas ficarem
             atrás do card. */}
         <div className="fancy-corners reveal">
-          <div className="relative overflow-hidden rounded-[1.75rem] bg-white shadow-[0_30px_80px_-44px_rgba(11,16,32,0.4)] ring-1 ring-black/[0.04] lg:flex lg:items-stretch">
+          <div className="relative overflow-hidden bg-white shadow-[0_30px_80px_-44px_rgba(11,16,32,0.4)] ring-1 ring-black/[0.04] lg:flex lg:items-stretch">
             {/* Imagem: mais paisagem no mobile/tablet, preenche altura no lg+ */}
             <div className="relative w-full
                             aspect-[4/3]

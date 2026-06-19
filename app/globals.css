@@ -276,15 +276,8 @@ body {
  * ------------------------------------------------------------------ */
 .fancy-corners {
   position: relative;
-  isolation: isolate;
-  overflow: clip; /* impede que as pontas causem scroll horizontal */
-
-  /*
-    --cs  = corner size  → escala suave de 5rem (mobile) a 14rem (desktop)
-    --co  = corner offset → sempre 14.7% do tamanho (mesma proporção em
-            qualquer resolução). Fórmula derivada dos valores originais:
-            1.1764 / 8  = 0.14705 ≈ 14.7%
-  */
+  background-color: #fff;
+  transform-style: preserve-3d;
   --cs: clamp(5rem, 3rem + 6vw, 14rem);
   --co: calc(var(--cs) * -0.147);
 }
@@ -296,7 +289,8 @@ body {
   width: var(--cs);
   height: var(--cs);
   background: var(--brand-green);
-  z-index: 1;
+  transform: translateZ(-1px); /* empurra para trás do card no espaço 3D */
+  z-index: -1;
 }
 
 /* canto superior-esquerdo */
