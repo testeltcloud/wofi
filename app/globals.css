@@ -293,7 +293,6 @@ body {
   z-index: -1;
 }
 
-/* canto superior-esquerdo */
 .fancy-corners::before {
   top: var(--co);
   left: var(--co);
