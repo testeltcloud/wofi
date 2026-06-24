@@ -88,11 +88,11 @@ export default function OpengraphImage() {
               maxWidth: 900,
             }}
           >
-            <span>A viagem é do cliente.</span>
-            <span>A conectividade também.</span>
+            <span>A viagem é do passageiro.</span>
+            <span>A <span className="text-[#2f6bff]">conectividade</span> é nossa.</span>
           </div>
           <div style={{ fontSize: 32, color: "rgba(255,255,255,0.7)" }}>
-            eSIM internacional em +165 países — para agências de viagem
+            eSIM internacional com cobertura em mais de 165 países — para agências de viagem
           </div>
         </div>
       </div>

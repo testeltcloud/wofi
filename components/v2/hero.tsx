@@ -51,9 +51,9 @@ export function V2Hero() {
             className="anim-up-lcp [animation-delay:0.12s] mt-5 font-[family-name:var(--font-poppins)] font-extrabold leading-[1.06] tracking-[-0.03em] text-[#0b1020] lg:mt-6"
             style={{ fontSize: "clamp(1.75rem, 2.8vw + 0.85rem, 3.7rem)" }}
           >
-            A viagem é do cliente.{" "}
+            A viagem é do passageiro.{" "}
             <br className="hidden xl:block" />
-            A <span className="text-[#2f6bff]">conectividade</span> também.
+            A <span className="text-[#2f6bff]">conectividade</span> é nossa.
           </h1>
 
           {/*
@@ -137,7 +137,7 @@ export function V2Hero() {
             style={{ fontSize: "clamp(0.72rem, 0.8vw, 0.875rem)" }}
           >
             <span className="h-2 w-2 shrink-0 rounded-full bg-[#2f6bff] lg:h-2.5 lg:w-2.5" aria-hidden />
-            +165 países
+            Cobertura em mais de 165 países
           </span>
 
           {/*
