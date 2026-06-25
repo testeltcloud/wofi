@@ -98,7 +98,7 @@ function FloatingCard({
 
   return (
     <div
-      className={`anim-fade absolute flex items-center gap-1.5 rounded-xl border border-white/50 bg-white/85 px-2 py-1.5 shadow-[0_10px_30px_-10px_rgba(14,23,38,0.4),inset_0_1px_0_0_rgba(255,255,255,0.65)] backdrop-blur-xl sm:gap-2.5 sm:rounded-2xl sm:px-3.5 sm:py-2.5 ${className}`}
+      className={`anim-fade absolute flex items-center gap-1.5 rounded-xl border border-white/50 bg-white/50 px-2 py-1.5 shadow-[0_10px_30px_-10px_rgba(14,23,38,0.4),inset_0_1px_0_0_rgba(255,255,255,0.65)] backdrop-blur-xl sm:gap-2.5 sm:rounded-2xl sm:px-3.5 sm:py-2.5 ${className}`}
       style={{ animationDelay: delay }}
     >
       <span
